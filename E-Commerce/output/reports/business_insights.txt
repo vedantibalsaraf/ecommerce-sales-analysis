@@ -1,0 +1,65 @@
+BUSINESS INSIGHTS REPORT
+E-commerce Sales Data Analysis Using Python
+================================================================================
+Dataset note: ALL figures below come from a SYNTHETIC e-commerce dataset.
+It contains no real customers or transactions. Findings demonstrate the
+analysis method and must not be treated as real market evidence.
+
+Scope: 1,500 unique orders | 2,825 units | 2025-01-01 to 2025-12-31
+Net revenue after discounts: ₹47,11,999.65 (INR)
+
+EXECUTIVE SNAPSHOT
+--------------------------------------------------------------------------------
+- Total net revenue: ₹47,11,999.65
+- Unique orders: 1,500
+- Units sold: 2,825
+- Average order value: ₹3,141.33
+- Leading category: Electronics (₹18,45,661.00)
+- Strongest month: November 2025 (₹6,53,958.80)
+- Top product by revenue: Smartwatch (₹8,01,556.80)
+- Leading city: Mumbai (₹6,47,269.95)
+
+FINDINGS
+--------------------------------------------------------------------------------
+
+1. Electronics is the highest-revenue product category
+   What the data shows: Electronics generated ₹18,45,661.00, or 39.17% of net revenue, from 352 orders and 670 units. The next two categories were Home & Kitchen (₹11,09,118.15) and Fashion (₹6,24,122.10).
+   Suggested action: Keep Electronics well stocked and test focused campaigns for it. Also check whether its revenue is accompanied by heavy discounting before increasing investment; the data alone does not show profitability.
+
+2. November 2025 was the strongest month for revenue
+   What the data shows: November 2025 produced ₹6,53,958.80 (13.88% of annual revenue) from 210 unique orders and 405 units. That is 66.54% above the average month of ₹3,92,666.64.
+   Suggested action: Use this peak period for capacity, inventory and staffing planning. The dataset shows timing but cannot prove why the peak occurred, so validate the pattern with real operational data.
+
+3. Smartwatch leads product revenue
+   What the data shows: Smartwatch generated ₹8,01,556.80 (17.01% of total) from 163 units. The top three products together contributed ₹16,34,792.75 (34.69%). By units, Smartwatch led with 163 units.
+   Suggested action: Protect availability and visibility for the leading products, and review their discount levels rather than assuming high revenue means high profit. High concentration also creates stock-out risk.
+
+4. Mumbai is the leading city by revenue
+   What the data shows: Mumbai contributed ₹6,47,269.95 (13.74% of total). The top three named cities were Mumbai (₹6,47,269.95), Delhi (₹6,05,395.75), Bengaluru (₹5,70,880.00), together accounting for 38.70% of revenue. Orders with an unknown city numbered 12 and contributed ₹19,123.90; improving city capture would make geographic reporting more complete.
+   Suggested action: Prioritise fulfilment and local campaigns in the strongest cities, while treating the ranking as descriptive. Improve city data capture at checkout so the comparison is complete.
+
+5. Monthly revenue is volatile rather than steadily growing
+   What the data shows: Revenue increased in 7 of 11 month-over-month comparisons and decreased in 4. The largest rise was in October 2025 (₹1,69,653.90, +44.95%), while the largest fall was in December 2025 (-₹2,19,052.10, -33.50%).
+   Suggested action: Investigate the high-change months by category, product and city before repeating any promotion or stock plan. Do not assume the changes were caused by seasonality; the dataset does not contain marketing spend, competitor or causal data.
+
+6. Average order value and payment mix point to basket opportunities
+   What the data shows: The average order value is ₹3,141.33 across 1,500 unique orders. UPI is the largest payment method by revenue, with ₹17,61,241.25 (37.38% of revenue) and 39.40% of orders.
+   Suggested action: Test bundles or order-value thresholds to lift the average order value, and monitor checkout reliability for the leading payment method. These are hypotheses to test, not proven revenue drivers.
+
+RECOMMENDATIONS AT A GLANCE
+--------------------------------------------------------------------------------
+1. Plan inventory and campaigns around Electronics, while reviewing discount depth and profitability.
+2. Prepare capacity for the November 2025 peak, then validate it on real data before treating it as a recurring seasonal pattern.
+3. Keep top-selling products available and reduce concentration risk by developing a second strong product group.
+4. Improve city capture at checkout and focus local execution on the highest-revenue cities.
+5. Investigate large month-to-month swings with category, product and city breakdowns rather than assuming a cause.
+6. Test basket-building offers and monitor the leading payment method.
+
+DATA NOTES AND LIMITATIONS
+--------------------------------------------------------------------------------
+- This is synthetic data, not a real business dataset.
+- Revenue is net of discounts and excludes costs, refunds and returns.
+- Missing discounts were treated as 0% by the cleaning rule.
+- Average order value = total net revenue / unique order_id count.
+- Figures describe associations in this dataset; they do not establish causation.
+- Only one synthetic year is covered, so long-term seasonality cannot be verified.

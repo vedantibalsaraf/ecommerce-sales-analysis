@@ -1,0 +1,11 @@
+metric,value
+total_net_revenue_inr,4711999.65
+gross_revenue_inr,5094705.00
+total_discount_amount_inr,382705.35
+unique_orders,1500
+total_units_sold,2825
+average_order_value_inr,3141.33
+cleaned_line_items,1500
+date_range_start,2025-01-01
+date_range_end,2025-12-31
+months_covered,12

@@ -1,0 +1,7 @@
+payment_method,orders,units_sold,net_revenue_inr,revenue_share_pct,order_share_pct
+UPI,591,1073,1761241.25,37.38,39.40
+Cash on Delivery,226,469,854744.50,18.14,15.07
+Credit Card,259,504,831957.45,17.66,17.27
+Net Banking,137,255,461952.10,9.80,9.13
+Debit Card,174,304,441443.50,9.37,11.60
+Wallet,113,220,360660.85,7.65,7.53

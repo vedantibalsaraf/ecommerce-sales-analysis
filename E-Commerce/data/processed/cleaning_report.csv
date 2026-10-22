@@ -1,0 +1,14 @@
+issue,rows_affected,action,explanation
+Exact duplicate records,25,Removed (first occurrence kept),"All 12 columns were identical, so these were treated as duplicate submissions, not separate purchases."
+Rows with any missing value,1020,Corrected or retained (see rows below),Missing values were handled per field. This includes blanks in optional fields such as coupon_code; a row can appear in more than one missing-value category.
+Missing critical fields,0,Removed,"order_id, order_date, quantity or unit_price was blank; date, units and revenue cannot be computed reliably."
+Invalid order_date,0,Removed,Date did not parse as an ISO date (YYYY-MM-DD).
+Invalid quantity,0,Removed,Quantity was not a whole number between 1 and 1000.
+Invalid unit_price,0,Removed,Price was not a positive finite number.
+Invalid discount,0,Removed,Discount was not numeric or was outside 0-100.
+Missing discount,15,Corrected to 0 (0%),"Conservative rule: a blank discount means no discount was recorded, so no discount is applied to revenue."
+Missing city,12,Corrected to 'Unknown',"The row is retained; revenue is still valid, and the city is reported as Unknown instead of being guessed."
+Missing other descriptive fields,0,Corrected to 'Unknown',"Blank product, category, payment method or customer values were filled with Unknown; the sale is retained."
+Missing coupon_code,1009,Retained blank,Optional field. Blank means the order had no coupon code.
+Missing customer_rating,18,Retained blank,Optional field. Blank means the customer did not rate the order.
+Conflicting rows sharing an order_id,0,Retained,Rows were not exact duplicates; they may be separate line items. The order is counted once in unique-order metrics.

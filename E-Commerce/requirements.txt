@@ -1,0 +1,6 @@
+# No external dependencies are required.
+#
+# This project uses only the Python standard library (argparse, calendar, csv,
+# random, datetime, pathlib, collections, dataclasses, math, html, unittest,
+# xml.etree.ElementTree). There is nothing to install.
+# Do not run pip install for this project.
