@@ -47,7 +47,7 @@ This project answers:
 - Generate accessible SVG charts with sensible INR formatting.
 - Write a business report that separates evidence from recommendations.
 - Test the calculations, cleaning rules and outputs with `unittest`.
-- Keep the entire project installable with zero third-party packages.
+- Keep the analysis pipeline installable with zero third-party packages.
 
 ## Tools used and Python-only constraint
 
@@ -55,22 +55,28 @@ This project answers:
 - Standard-library modules used include `argparse`, `calendar`, `csv`,
   `random`, `datetime`, `pathlib`, `collections`, `dataclasses`, `math`,
   `html`, `unittest` and `xml.etree.ElementTree`.
-- No third-party dependencies.
+- The analysis pipeline has no third-party dependencies; the optional
+  dashboard adds Streamlit only.
 - No pandas, numpy, matplotlib, seaborn, plotly, JavaScript, SQL, databases,
-  Jupyter Notebook, APIs or web frameworks.
+  Jupyter Notebook or APIs are used by the analysis pipeline. Only the
+  optional Streamlit dashboard (`app.py`) uses a third-party package.
 - SVG charts are written as XML strings by `src/visualization.py`.
 
-**Do not run `pip install`.** `requirements.txt` intentionally lists no
-packages. The project does not modify the system Python environment.
+**The command-line pipeline needs no packages.** `pip install` is only needed
+for the optional Streamlit dashboard (`app.py`), which is used for the cloud
+deployment described at the end of this file. See `requirements.txt`.
 
 ## Project structure
 
 ```
 E-Commerce/
+├── app.py                      # Streamlit dashboard (cloud entry point)
 ├── main.py                     # Status and all pipeline commands
 ├── README.md
-├── requirements.txt            # Explicitly no external dependencies
+├── requirements.txt            # Streamlit for the dashboard; CLI needs none
 ├── .gitignore
+├── .streamlit/
+│   └── config.toml             # Theme and server settings
 ├── data/
 │   ├── __init__.py
 │   ├── generate_data.py        # Reproducible synthetic data generator
@@ -413,7 +419,54 @@ Additional checks performed:
 - Compare the workflow with a real, properly anonymised dataset if one is
   available.
 
-## No dashboard, no dependencies
+## Streamlit dashboard
 
-This is a command-line analytics project. It deliberately does not include a
-dashboard and does not require any software beyond Python itself.
+The command-line pipeline still needs nothing beyond Python. An optional web
+dashboard is included for deployment and demos:
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+streamlit run app.py
+```
+
+The dashboard reuses `src/analysis.py`, `src/visualization.py` and
+`src/insights.py`; it does not reimplement any calculations.
+
+## Deploy on Streamlit Community Cloud
+
+1. Create a GitHub repository and push this folder (see the steps below).
+2. Go to <https://share.streamlit.io> and sign in with GitHub.
+3. Click **Create app** → **Deploy a public app from GitHub**.
+4. Choose the repository, branch `main`, and set **Main file path** to
+   `app.py`.
+5. Optionally choose Python 3.13 under **Advanced settings**.
+6. Click **Deploy**. The first build installs `requirements.txt` and usually
+   takes 2–5 minutes.
+
+No secrets or environment variables are required because the dataset is
+committed in `data/` and the app only reads it.
+
+### First-time Git setup
+
+```bash
+cd /Users/vedantibalsaraf/Desktop/E-Commerce
+git init
+git add .
+git commit -m "E-commerce analysis dashboard"
+git branch -M main
+git remote add origin https://github.com/<your-username>/<repo-name>.git
+
+# First push to an empty repository:
+git push -u origin main
+
+# If the repository already contains an older upload of this project,
+# Git rejects the push as "unrelated histories". In that case replace the
+# old contents with your local project (safe when the old upload is only an
+# earlier copy of the same files):
+git push -u origin main --force
+```
+
+Keep `.streamlit/config.toml` committed. Never commit `.streamlit/secrets.toml`
+or a virtual environment — both are already listed in `.gitignore`.

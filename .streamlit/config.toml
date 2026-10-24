@@ -1,0 +1,18 @@
+# Streamlit configuration for local use and Streamlit Community Cloud.
+# Docs: https://docs.streamlit.io/develop/api-reference/configuration/config.toml
+
+[theme]
+base = "light"
+primaryColor = "#2563eb"
+backgroundColor = "#ffffff"
+secondaryBackgroundColor = "#f1f5f9"
+textColor = "#1f2937"
+font = "sans serif"
+
+[browser]
+# Do not send usage statistics to Streamlit.
+gatherUsageStats = false
+
+[server]
+# Required when running behind a proxy/container; harmless on Community Cloud.
+headless = true

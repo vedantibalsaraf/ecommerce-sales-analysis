@@ -1,4 +1,8 @@
-"""Verify that the project imports only Python standard-library modules."""
+"""Verify that the project imports only Python standard-library modules.
+
+The optional Streamlit dashboard (``app.py``) is the only file allowed to
+import a third-party package, so it is skipped here.
+"""
 
 from __future__ import annotations
 
@@ -9,6 +13,7 @@ from pathlib import Path
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 LOCAL_MODULES = {"main", "src", "data", "tests"}
+DASHBOARD_PATH = PROJECT_ROOT / "app.py"
 
 
 class StandardLibraryOnlyTests(unittest.TestCase):
@@ -17,7 +22,7 @@ class StandardLibraryOnlyTests(unittest.TestCase):
         violations = []
 
         for path in PROJECT_ROOT.rglob("*.py"):
-            if "__pycache__" in path.parts:
+            if "__pycache__" in path.parts or path == DASHBOARD_PATH:
                 continue
             tree = ast.parse(path.read_text(encoding="utf-8"), filename=str(path))
             for node in ast.walk(tree):
