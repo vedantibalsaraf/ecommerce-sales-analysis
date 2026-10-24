@@ -1,0 +1,16 @@
+# ---------------------------------------------------------------------------
+# Command-line pipeline (main.py)
+# ---------------------------------------------------------------------------
+# No external dependencies are required.
+#
+# The analysis pipeline uses only the Python standard library (argparse,
+# calendar, csv, random, datetime, pathlib, collections, dataclasses, math,
+# html, unittest, xml.etree.ElementTree). It runs with:
+#     python3 main.py all
+#
+# ---------------------------------------------------------------------------
+# Streamlit dashboard (app.py)
+# ---------------------------------------------------------------------------
+# Streamlit Community Cloud installs the packages below automatically.
+# Streamlit brings its own dependencies (including pandas and pyarrow).
+streamlit>=1.36,<2.0
